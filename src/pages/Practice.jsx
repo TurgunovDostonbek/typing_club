@@ -18,10 +18,8 @@ export default function Practice() {
   const currentDiff = settings.difficulty;
   const currentLang = settings.language;
 
-  // We set a generous 10-minute limit (600s) for practice mode so they never run out of time
   const PRACTICE_LIMIT = 600;
 
-  // Initialize typing engine
   const {
     text,
     typedText,
@@ -33,6 +31,7 @@ export default function Practice() {
     totalTypedCount,
     activeKey,
     incorrectKey,
+    shakeActive,
     showResultsModal,
     setShowResultsModal,
     results,
@@ -54,7 +53,6 @@ export default function Practice() {
     focusInput();
   }, []);
 
-  // Reset test and fetch a new text when language or difficulty changes
   useEffect(() => {
     resetTest();
   }, [currentDiff, currentLang, resetTest]);
@@ -67,11 +65,22 @@ export default function Practice() {
     focusInput();
   };
 
-  // Math metrics
+  // Math helper for dynamic speed ranking badge
+  const getSpeedRank = (wpmVal) => {
+    if (wpmVal < 30) return { label: 'Turtle 🐢', class: 'turtle' };
+    if (wpmVal < 60) return { label: 'Rabbit 🐇', class: 'rabbit' };
+    if (wpmVal < 90) return { label: 'Cheetah 🐆', class: 'cheetah' };
+    return { label: 'Lightning ⚡', class: 'lightning' };
+  };
+
+  const speedRank = getSpeedRank(wpm);
   const timeElapsed = PRACTICE_LIMIT - timer;
   const characterCount = text.length;
   const characterTypedCount = typedText.length;
   const progressPercent = characterCount > 0 ? (characterTypedCount / characterCount) * 100 : 0;
+
+  // Zen Mode classes toggle
+  const isZenActive = status === 'running' && settings.zenMode;
 
   const difficulties = [
     { id: 'beginner', label: 'Beginner', desc: 'Short, easy words' },
@@ -94,27 +103,35 @@ export default function Practice() {
         </p>
       </div>
 
-      {/* Difficulty buttons Selector */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1.5rem' }}>
-        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 600, textTransform: 'uppercase' }}>
-          Select Difficulty
-        </span>
-        <div className="difficulty-selector">
-          {difficulties.map((diff) => (
-            <button
-              key={diff.id}
-              onClick={() => handleDifficultyChange(diff.id)}
-              className={`diff-btn ${currentDiff === diff.id ? `active ${diff.id}` : ''}`}
-              title={diff.desc}
-            >
-              {diff.label}
-            </button>
-          ))}
+      {/* Difficulty Selector - Hidden when test is running */}
+      {status === 'idle' ? (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '1.5rem' }}>
+          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.5rem', fontWeight: 600, textTransform: 'uppercase' }}>
+            Select Difficulty
+          </span>
+          <div className="difficulty-selector">
+            {difficulties.map((diff) => (
+              <button
+                key={diff.id}
+                onClick={() => handleDifficultyChange(diff.id)}
+                className={`diff-btn ${currentDiff === diff.id ? `active ${diff.id}` : ''}`}
+                title={diff.desc}
+              >
+                {diff.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div style={{ height: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'var(--font-mono)' }}>
+            Practice Mode: {currentDiff.toUpperCase()} | Language: {currentLang.toUpperCase()}
+          </span>
+        </div>
+      )}
 
-      {/* Live Stats Display Panel */}
-      <div className="card stats-bar" style={{ marginBottom: '1.5rem' }}>
+      {/* Live Stats Display Panel (Hides in Zen Mode unless hovered) */}
+      <div className={`card stats-bar ${isZenActive ? 'zen-hidden' : ''}`} style={{ marginBottom: '1.5rem' }}>
         <div className="stats-group">
           <div className="stat-box">
             <span className="label">Time Elapsed</span>
@@ -122,9 +139,15 @@ export default function Practice() {
               {timeElapsed}s
             </span>
           </div>
-          <div className="stat-box">
-            <span className="label">Speed</span>
-            <span className="val" style={{ color: 'var(--primary)' }}>{wpm} <span style={{ fontSize: '0.85rem' }}>WPM</span></span>
+          <div className="stat-box" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span className="label">Speed</span>
+              <span className="val" style={{ color: 'var(--primary)' }}>{wpm} <span style={{ fontSize: '0.85rem' }}>WPM</span></span>
+            </div>
+            {/* Speed rank badge badge */}
+            <span className={`speed-badge ${speedRank.class}`} style={{ alignSelf: 'flex-end', marginBottom: '3px' }}>
+              {speedRank.label}
+            </span>
           </div>
         </div>
 
@@ -156,7 +179,7 @@ export default function Practice() {
 
       {/* Typing box card wrapper */}
       <div 
-        className={`typing-box-wrapper ${isFocused ? 'focused' : ''}`}
+        className={`typing-box-wrapper ${isFocused ? 'focused' : ''} ${shakeActive ? 'shake-active' : ''}`}
         onClick={handleWrapperClick}
         style={{ flexGrow: 1 }}
       >
@@ -188,12 +211,12 @@ export default function Practice() {
         </div>
       </div>
 
-      {/* Typing Progress details bar */}
-      <div style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+      {/* Typing Progress details bar (Hides in Zen Mode) */}
+      <div className={isZenActive ? 'zen-hidden' : ''} style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
         <span>Character Progress: {characterTypedCount} / {characterCount}</span>
         <span>{Math.round(progressPercent)}% Complete</span>
       </div>
-      <div style={{ marginTop: '0.25rem', marginBottom: '1.5rem' }}>
+      <div className={isZenActive ? 'zen-hidden' : ''} style={{ marginTop: '0.25rem', marginBottom: '1.5rem' }}>
         <div className="progress-bar-wrapper" style={{ height: '2px' }} title="Typing Progress">
           <div 
             className="progress-bar-fill" 

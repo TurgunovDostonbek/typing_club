@@ -6,9 +6,11 @@ export const useSettings = () => useContext(SettingsContext);
 
 const DEFAULT_SETTINGS = {
   sound: true,
+  soundType: 'mechanical', // 'mechanical' | 'retro' | 'synth'
   caretStyle: 'line', // 'line' | 'block' | 'underline' | 'none'
   showKeyboard: true,
   showErrors: true,
+  zenMode: false,
   defaultTimer: 30, // 15 | 30 | 60 | 120 | custom
   language: 'en', // 'en' | 'uz' | 'ru'
   difficulty: 'beginner' // 'beginner' | 'intermediate' | 'advanced' | 'expert'
@@ -20,7 +22,6 @@ export const SettingsProvider = ({ children }) => {
       const saved = localStorage.getItem('typingpro_settings');
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Merge with defaults to ensure all keys exist
         return { ...DEFAULT_SETTINGS, ...parsed };
       }
     } catch (e) {

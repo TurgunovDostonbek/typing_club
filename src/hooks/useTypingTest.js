@@ -7,11 +7,11 @@ import { useSettings } from '../context/SettingsContext';
 export default function useTypingTest(customDuration = null, customText = null) {
   const { settings } = useSettings();
   const soundEnabled = settings.sound;
+  const soundType = settings.soundType || 'mechanical';
   const showErrorsEnabled = settings.showErrors;
   const testLang = settings.language;
   const testDiff = settings.difficulty;
   
-  // Decide test target duration (custom duration takes priority, then settings default)
   const durationLimit = customDuration !== null ? customDuration : settings.defaultTimer;
 
   // Typing core states
@@ -24,9 +24,10 @@ export default function useTypingTest(customDuration = null, customText = null) 
   const [accuracy, setAccuracy] = useState('100.0');
   const [totalTypedCount, setTotalTypedCount] = useState(0);
   
-  // Keyboard sync state (holds key name of currently pressed key)
+  // Keyboard sync states
   const [activeKey, setActiveKey] = useState(null);
   const [incorrectKey, setIncorrectKey] = useState(null);
+  const [shakeActive, setShakeActive] = useState(false); // Activates typing card shake on typo
 
   // Results display state
   const [showResultsModal, setShowResultsModal] = useState(false);
@@ -37,7 +38,7 @@ export default function useTypingTest(customDuration = null, customText = null) 
   const startTimeRef = useRef(null);
   const totalCorrectCharsRef = useRef(0);
 
-  // Play synthesized mechanical key click / buzz warning
+  // Play synthesized mechanical / retro / synth sounds
   const playSynthesizedSound = useCallback((isCorrect) => {
     if (!soundEnabled) return;
     try {
@@ -45,41 +46,85 @@ export default function useTypingTest(customDuration = null, customText = null) 
       if (!AudioContext) return;
       const ctx = new AudioContext();
       
-      if (isCorrect) {
-        // High click sound
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(900, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(350, ctx.currentTime + 0.04);
-        
-        gain.gain.setValueAtTime(0.015, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04);
-        
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.04);
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      
+      if (soundType === 'retro') {
+        // 8-bit digital sound style
+        if (isCorrect) {
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(1200, ctx.currentTime);
+          gain.gain.setValueAtTime(0.008, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.03);
+          
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.03);
+        } else {
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(80, ctx.currentTime);
+          gain.gain.setValueAtTime(0.04, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.12);
+          
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.12);
+        }
+      } else if (soundType === 'synth') {
+        // Soft synth pop chord style
+        if (isCorrect) {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(523.25, ctx.currentTime); // Note C5
+          gain.gain.setValueAtTime(0.02, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.08);
+          
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.08);
+        } else {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(110, ctx.currentTime); // Note A2
+          gain.gain.setValueAtTime(0.03, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.18);
+          
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.18);
+        }
       } else {
-        // Deep buzz warning
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(150, ctx.currentTime);
-        osc.frequency.linearRampToValueAtTime(90, ctx.currentTime + 0.12);
-        
-        gain.gain.setValueAtTime(0.06, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.12);
-        
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.12);
+        // Standard 'mechanical' typewriter style
+        if (isCorrect) {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(900, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(350, ctx.currentTime + 0.04);
+          gain.gain.setValueAtTime(0.015, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04);
+          
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.04);
+        } else {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(150, ctx.currentTime);
+          osc.frequency.linearRampToValueAtTime(90, ctx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.06, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.12);
+          
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.12);
+        }
       }
     } catch (e) {
       console.warn('Audio synthesis failed', e);
     }
-  }, [soundEnabled]);
+  }, [soundEnabled, soundType]);
 
   // Selects and prepares a new typing test target text
   const fetchNewText = useCallback(() => {
@@ -93,12 +138,10 @@ export default function useTypingTest(customDuration = null, customText = null) 
 
   // Full reset of the typing test states
   const resetTest = useCallback(() => {
-    // Clear timer interval
     if (timerIntervalRef.current) {
       clearInterval(timerIntervalRef.current);
     }
     
-    // Reset state values
     fetchNewText();
     setTypedText('');
     setStatus('idle');
@@ -109,9 +152,9 @@ export default function useTypingTest(customDuration = null, customText = null) 
     setTotalTypedCount(0);
     setActiveKey(null);
     setIncorrectKey(null);
+    setShakeActive(false);
     setShowResultsModal(false);
     
-    // Reset refs
     startTimeRef.current = null;
     totalCorrectCharsRef.current = 0;
   }, [fetchNewText, durationLimit]);
@@ -183,14 +226,12 @@ export default function useTypingTest(customDuration = null, customText = null) 
         setTimer((prev) => {
           if (prev <= 1) {
             clearInterval(timerIntervalRef.current);
-            // Must end test
             setTimeout(() => {
               endTest();
             }, 0);
             return 0;
           }
           
-          // Calculate live mid-test WPM
           const elapsed = startTimeRef.current ? (Date.now() - startTimeRef.current) / 1000 : 0;
           const currentWpm = calculateWPM(totalCorrectCharsRef.current, elapsed);
           setWpm(currentWpm);
@@ -209,16 +250,13 @@ export default function useTypingTest(customDuration = null, customText = null) 
 
   // Handle keys inputs
   const handleKeyDown = useCallback((e) => {
-    // 1. Reset shortcuts
     if (e.key === 'Escape') {
       e.preventDefault();
       resetTest();
       return;
     }
 
-    // Tab key handling
     if (e.key === 'Tab') {
-      // Allow browser focus traversal or override for fast refocus
       e.preventDefault();
       resetTest();
       return;
@@ -230,15 +268,12 @@ export default function useTypingTest(customDuration = null, customText = null) 
       return;
     }
 
-    // Ignore non-character keys (e.g. Shift, Control, Alt, Meta)
     if (e.key.length !== 1 && e.key !== 'Backspace') {
       return;
     }
 
-    // If test is completed, reject inputs
     if (status === 'completed') return;
 
-    // Start timer on first keystroke
     let activeStatus = status;
     if (status === 'idle') {
       setStatus('running');
@@ -246,12 +281,10 @@ export default function useTypingTest(customDuration = null, customText = null) 
       startTimeRef.current = Date.now();
     }
 
-    // Sync pressed key name (lowercase for comparison)
     let keyName = e.key;
     if (keyName === ' ') keyName = 'space';
     setActiveKey(keyName);
     
-    // Clear key highlighting after a brief delay
     setTimeout(() => {
       setActiveKey((prev) => prev === keyName ? null : prev);
     }, 100);
@@ -265,14 +298,12 @@ export default function useTypingTest(customDuration = null, customText = null) 
         const deletedChar = typedText[currentIndex - 1];
         const targetChar = text[currentIndex - 1];
         
-        // Adjust correct chars ref if the deleted one was correct
         if (deletedChar === targetChar) {
           totalCorrectCharsRef.current = Math.max(0, totalCorrectCharsRef.current - 1);
         }
         
         setTypedText((prev) => prev.slice(0, -1));
         
-        // Recalculate accuracy & WPM
         const newTyped = typedText.slice(0, -1);
         const elapsed = startTimeRef.current ? (Date.now() - startTimeRef.current) / 1000 : 0;
         setWpm(calculateWPM(totalCorrectCharsRef.current, elapsed));
@@ -281,10 +312,8 @@ export default function useTypingTest(customDuration = null, customText = null) 
       return;
     }
 
-    // If user has already finished all characters, do not append further
     if (currentIndex >= text.length) return;
 
-    // Validate key typed
     const targetChar = text[currentIndex];
     const typedChar = e.key;
     const isCorrect = typedChar === targetChar;
@@ -297,7 +326,12 @@ export default function useTypingTest(customDuration = null, customText = null) 
     } else {
       setErrors((prev) => prev + 1);
       
-      // Flash incorrect key visual highlight
+      // Trigger card shake and keyboard highlights on typo
+      setShakeActive(true);
+      setTimeout(() => {
+        setShakeActive(false);
+      }, 150);
+
       if (showErrorsEnabled) {
         const wrongKey = typedChar === ' ' ? 'space' : typedChar;
         setIncorrectKey(wrongKey);
@@ -311,12 +345,10 @@ export default function useTypingTest(customDuration = null, customText = null) 
     setTypedText(nextTyped);
     setTotalTypedCount((prev) => prev + 1);
 
-    // Compute live metrics
     const elapsed = startTimeRef.current ? (Date.now() - startTimeRef.current) / 1000 : 0.001;
     setWpm(calculateWPM(totalCorrectCharsRef.current, elapsed));
     setAccuracy(calculateAccuracy(totalCorrectCharsRef.current, nextTyped.length));
 
-    // End test immediately if the last character has been typed
     if (nextTyped.length === text.length) {
       setTimeout(() => {
         endTest();
@@ -335,6 +367,7 @@ export default function useTypingTest(customDuration = null, customText = null) 
     totalTypedCount,
     activeKey,
     incorrectKey,
+    shakeActive,
     showResultsModal,
     setShowResultsModal,
     results,

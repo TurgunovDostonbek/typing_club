@@ -18,18 +18,14 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 export default function TypingTest() {
-  const { settings, updateSetting } = useSettings();
+  const { settings } = useSettings();
   const navigate = useNavigate();
-  
-  // Custom timer duration option (managed locally, resets to settings.defaultTimer when settings load)
   const [testTime, setTestTime] = useState(settings.defaultTimer);
   
-  // Ref to settings default time to update when it changes
   useEffect(() => {
     setTestTime(settings.defaultTimer);
   }, [settings.defaultTimer]);
 
-  // Hook initialization
   const {
     text,
     typedText,
@@ -41,6 +37,7 @@ export default function TypingTest() {
     totalTypedCount,
     activeKey,
     incorrectKey,
+    shakeActive,
     showResultsModal,
     setShowResultsModal,
     results,
@@ -52,7 +49,6 @@ export default function TypingTest() {
   const [currentToast, setCurrentToast] = useState(null);
   const inputRef = useRef(null);
 
-  // Focus input ref helper
   const focusInput = () => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -60,29 +56,36 @@ export default function TypingTest() {
     }
   };
 
-  // Focus automatically on mount
   useEffect(() => {
     focusInput();
   }, []);
 
-  // Sync click anywhere on the typing box to focus the hidden text area
   const handleWrapperClick = () => {
     focusInput();
   };
 
-  // Watch for toast triggers on completion
   useEffect(() => {
     if (results && results.unlockedAchievements && results.unlockedAchievements.length > 0) {
-      // Trigger toast for the first newly unlocked achievement
       setCurrentToast(results.unlockedAchievements[0]);
     }
   }, [results]);
 
-  // Percentage calculations
+  // Math helper for dynamic speed ranking badge
+  const getSpeedRank = (wpmVal) => {
+    if (wpmVal < 30) return { label: 'Turtle 🐢', class: 'turtle' };
+    if (wpmVal < 60) return { label: 'Rabbit 🐇', class: 'rabbit' };
+    if (wpmVal < 90) return { label: 'Cheetah 🐆', class: 'cheetah' };
+    return { label: 'Lightning ⚡', class: 'lightning' };
+  };
+
+  const speedRank = getSpeedRank(wpm);
   const timeProgressPercent = ((testTime - timer) / testTime) * 100;
   const characterCount = text.length;
   const characterTypedCount = typedText.length;
   const charProgressPercent = characterCount > 0 ? (characterTypedCount / characterCount) * 100 : 0;
+
+  // Zen Mode classes toggle
+  const isZenActive = status === 'running' && settings.zenMode;
 
   return (
     <div className="container" style={{ padding: '2rem 1.5rem', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
@@ -109,8 +112,8 @@ export default function TypingTest() {
         </div>
       )}
 
-      {/* Main Stats Display Panel */}
-      <div className="card stats-bar" style={{ marginBottom: '1.5rem' }}>
+      {/* Main Stats Display Panel (Hides in Zen Mode unless hovered) */}
+      <div className={`card stats-bar ${isZenActive ? 'zen-hidden' : ''}`} style={{ marginBottom: '1.5rem' }}>
         <div className="stats-group">
           <div className="stat-box">
             <span className="label">Time Left</span>
@@ -118,9 +121,15 @@ export default function TypingTest() {
               {timer}s
             </span>
           </div>
-          <div className="stat-box">
-            <span className="label">WPM</span>
-            <span className="val" style={{ color: 'var(--primary)' }}>{wpm}</span>
+          <div className="stat-box" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '0.75rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span className="label">WPM</span>
+              <span className="val" style={{ color: 'var(--primary)' }}>{wpm}</span>
+            </div>
+            {/* Speed rank badge badge */}
+            <span className={`speed-badge ${speedRank.class}`} style={{ alignSelf: 'flex-end', marginBottom: '3px' }}>
+              {speedRank.label}
+            </span>
           </div>
         </div>
 
@@ -140,7 +149,7 @@ export default function TypingTest() {
 
       {/* Timer Progress Bar (above typing box) */}
       <div style={{ marginBottom: '0.5rem' }}>
-        <div className="progress-bar-wrapper" title="Timer Progress">
+        <div className={`progress-bar-wrapper ${isZenActive ? 'zen-hidden' : ''}`} title="Timer Progress">
           <div 
             className="progress-bar-fill" 
             style={{ width: `${100 - timeProgressPercent}%`, backgroundColor: timer <= 5 ? 'var(--error)' : 'var(--primary)' }}
@@ -156,13 +165,13 @@ export default function TypingTest() {
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         value={typedText}
-        onChange={() => {}} // Controlled read-only via hook keydown handlers
+        onChange={() => {}}
         tabIndex={0}
       />
 
-      {/* Typing box wrapper with custom caret class styling */}
+      {/* Typing box wrapper with dynamic shake class */}
       <div 
-        className={`typing-box-wrapper ${isFocused ? 'focused' : ''}`}
+        className={`typing-box-wrapper ${isFocused ? 'focused' : ''} ${shakeActive ? 'shake-active' : ''}`}
         onClick={handleWrapperClick}
         style={{ flexGrow: 1 }}
       >
@@ -177,7 +186,6 @@ export default function TypingTest() {
           </div>
         )}
 
-        {/* Character highlights grid */}
         <div className={`typing-text-display caret-${settings.caretStyle}`}>
           {text.split('').map((char, index) => {
             let charClass = 'char';
@@ -196,12 +204,12 @@ export default function TypingTest() {
         </div>
       </div>
 
-      {/* Character progress indicator */}
-      <div style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+      {/* Character progress indicator (Hides in Zen Mode) */}
+      <div className={isZenActive ? 'zen-hidden' : ''} style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
         <span>Progress: {characterTypedCount} / {characterCount} chars</span>
         <span>{Math.round(charProgressPercent)}% Complete</span>
       </div>
-      <div style={{ marginTop: '0.25rem', marginBottom: '1.5rem' }}>
+      <div className={isZenActive ? 'zen-hidden' : ''} style={{ marginTop: '0.25rem', marginBottom: '1.5rem' }}>
         <div className="progress-bar-wrapper" style={{ height: '2px' }} title="Typing Progress">
           <div 
             className="progress-bar-fill" 

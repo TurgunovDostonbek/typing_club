@@ -17,7 +17,8 @@ import {
   Activity, 
   RotateCcw,
   Trash2,
-  Check
+  Check,
+  Eye as ZenIcon
 } from 'lucide-react';
 
 export default function Settings() {
@@ -111,7 +112,7 @@ export default function Settings() {
           <div className="setting-row">
             <div>
               <label style={{ display: 'block', fontWeight: 600, color: 'var(--text-bright)' }}>Sound Feedback</label>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Play mechanical key sounds on click, buzz warning on error.</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Play synthesized mechanical key sounds on click, buzz warning on error.</span>
             </div>
             <label className="switch">
               <input 
@@ -123,7 +124,42 @@ export default function Settings() {
             </label>
           </div>
 
-          {/* Caret Style selection */}
+          {/* Sound Preset Type selector */}
+          {settings.sound && (
+            <div className="setting-row">
+              <div>
+                <label style={{ display: 'block', fontWeight: 600, color: 'var(--text-bright)' }}>Sound Preset Type</label>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Choose between mechanical keyclick, digital retro bleep, or ambient synth chords.</span>
+              </div>
+              <select 
+                value={settings.soundType}
+                onChange={(e) => updateSetting('soundType', e.target.value)}
+                className="select-input"
+              >
+                <option value="mechanical">Mechanical click</option>
+                <option value="retro">8-bit Retro Beep</option>
+                <option value="synth">Ambient Pop Synth</option>
+              </select>
+            </div>
+          )}
+
+          {/* Zen Mode toggle */}
+          <div className="setting-row">
+            <div>
+              <label style={{ display: 'block', fontWeight: 600, color: 'var(--text-bright)' }}>Zen Mode Focus</label>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Hides WPM, accuracy, and timer elements during typing to minimize stress.</span>
+            </div>
+            <label className="switch">
+              <input 
+                type="checkbox" 
+                checked={settings.zenMode} 
+                onChange={(e) => updateSetting('zenMode', e.target.checked)} 
+              />
+              <span className="slider"></span>
+            </label>
+          </div>
+
+          {/* Cursor Caret Style selection */}
           <div className="setting-row">
             <div>
               <label style={{ display: 'block', fontWeight: 600, color: 'var(--text-bright)' }}>Cursor Caret Style</label>

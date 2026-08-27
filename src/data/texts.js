@@ -8,7 +8,14 @@ export const typingTexts = {
       "Life is what happens when you are busy making other plans.",
       "The best way to predict the future is to create it ourselves.",
       "Do what you can, with what you have, where you are right now.",
-      "Believe you can and you are halfway there to achieving your dreams."
+      "Believe you can and you are halfway there to achieving your dreams.",
+      "Focus on accuracy first, then speed will follow naturally.",
+      "Code is read much more often than it is written by developers.",
+      "Every master was once a beginner who refused to give up.",
+      "Small progress every day adds up to big results over time.",
+      "Write clean code that is easy to read and simple to maintain.",
+      "Keyboard shortcuts save a lot of time during coding sessions.",
+      "Keep practicing every day to build finger muscle memory."
     ],
     intermediate: [
       "Coding is like writing a book, except that if you miss a single comma on page three hundred, the whole thing makes no sense.",
@@ -18,7 +25,14 @@ export const typingTexts = {
       "Good design is not just what it looks like and feels like. Design is how it works, how users interact with it, and the value it provides.",
       "JavaScript is a powerful language that runs the modern web. Understanding closures, promises, and async execution is key to mastering it.",
       "Regular practice helps build muscle memory in your fingers. Soon you will type without thinking about where each key is located.",
-      "Technology is best when it brings people together. Let us build applications that make the world a more connected and efficient place."
+      "Technology is best when it brings people together. Let us build applications that make the world a more connected and efficient place.",
+      "React hooks allow developers to use state and other React features without writing a class, simplifying component logic.",
+      "Version control systems like Git are crucial for collaborative software development, allowing teams to track changes easily.",
+      "Responsiveness ensures that websites look great on all devices, from small smartphones to massive desktop monitors.",
+      "Continuous learning is the key to surviving and thriving in the competitive world of software engineering and technology.",
+      "Clean architecture separates the business logic from the delivery mechanism, making code testable and maintainable.",
+      "User experience design focuses on understanding user needs, values, abilities, and also their limitations.",
+      "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are not smart enough to debug it."
     ],
     advanced: [
       "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Component-based architecture allows you to build encapsulated components that manage their own state.",
@@ -28,7 +42,14 @@ export const typingTexts = {
       "To become an expert touch typist, you must maintain correct posture, place your fingers on the home row keys, and strike each key with the correct finger. Accuracy is far more important than speed in the early stages; speed is a natural byproduct of consistent accuracy over time.",
       "The open source community is the backbone of modern software development. Millions of developers contribute to projects that power global servers, database engines, and frontend libraries. Giving back by contributing code, writing documentation, or mentoring others is highly rewarding.",
       "Learning a new programming language requires patience and hands-on practice. Instead of just reading books, write small utilities, build web pages, solve algorithmic challenges, and read code written by experienced developers. This practical experience builds deep understanding.",
-      "Designing responsive interfaces requires a mobile-first approach. By starting with the smallest screen sizes, developers ensure that essential features are prioritised. Media queries can then be used to scale the design gracefully up to large desktop monitors."
+      "Designing responsive interfaces requires a mobile-first approach. By starting with the smallest screen sizes, developers ensure that essential features are prioritised. Media queries can then be used to scale the design gracefully up to large desktop monitors.",
+      "A database index is a data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space. Choosing the correct indexes requires analyzing application queries and database performance bottlenecks.",
+      "Cascading Style Sheets, commonly referred to as CSS, is a stylesheet language used for describing the presentation of a document written in a markup language. It allows developers to separate layout, design, and colors from HTML structures for better organization.",
+      "RESTful APIs provide a standardized way for different software systems to communicate over HTTP. By using standard HTTP methods like GET, POST, PUT, and DELETE, developers can build scalable, stateless web services that can be consumed by various clients.",
+      "Asynchronous programming is a technique that enables your program to start a potentially long-running task and still be responsive to other events while that task runs, rather than having to wait until that task has finished.",
+      "Web accessibility ensures that websites, tools, and technologies are designed and developed so that people with disabilities can use them. This includes support for screen readers, keyboard navigation, and proper contrast ratios.",
+      "The Model-View-Controller pattern is an architectural design pattern commonly used for developing user interfaces. It divides the related program logic into three interconnected elements to separate internal representations of information from user presentation.",
+      "State management is a crucial aspect of frontend applications. As apps grow in complexity, managing data flow between nested components becomes challenging, necessitating solutions like the Context API, Redux, Zustand, or simple custom state containers."
     ],
     expert: [
       "The Big O notation (e.g., O(N log N), O(1), O(N^2)) measures the worst-case time complexity of algorithms. Selecting the right data structure—such as a hash map, binary search tree, or graph—is crucial when handling large datasets in high-performance computing environments where memory and CPU cycles are limited.",
@@ -36,7 +57,16 @@ export const typingTexts = {
       "Security is a fundamental pillar of software engineering. Developers must protect applications against common vulnerabilities like Cross-Site Scripting (XSS), SQL Injection (SQLi), and Cross-Site Request Forgery (CSRF). Implementing strict Content Security Policies (CSP), sanitizing user input, and using HTTPS are mandatory practices.",
       "CSS Grid Layout and Flexbox are powerful layout engines. While Flexbox is ideal for one-dimensional layouts (either a row or a column), Grid is designed for two-dimensional layouts, offering precise control over rows, columns, grid template areas, alignment, gaps, and responsive auto-fit structures without complex hacks.",
       "Functional programming principles, such as pure functions, immutability, first-class functions, and function composition, help write code that is predictable and easy to test. In React, these concepts are widely used through hooks and state updates, where direct state mutation is considered an anti-pattern.",
-      "Containerization tools like Docker and orchestration systems like Kubernetes have revolutionized software deployment. By packaging applications with all their dependencies into standardized units, developers ensure consistent behavior across local development, staging servers, and production clouds."
+      "Containerization tools like Docker and orchestration systems like Kubernetes have revolutionized software deployment. By packaging applications with all their dependencies into standardized units, developers ensure consistent behavior across local development, staging servers, and production clouds.",
+      "The Domain Name System (DNS) is a hierarchical and decentralized naming system for computers, services, or other resources connected to the Internet or a private network. It associates various information with domain names assigned to each of the participating entities.",
+      "WebSockets provide a bilateral, persistent communication channel over a single TCP connection, enabling real-time data exchange between client and server. This is essential for applications like chat platforms, multiplayer games, and live stock market tickers.",
+      "Garbage collection in high-level programming languages is an automatic memory management process. The garbage collector attempts to reclaim memory occupied by objects that are no longer in use by the program, preventing memory leaks and overflow errors.",
+      "The Solid principles of object-oriented design (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion) guide developers in creating software that is clean, understandable, flexible, and maintainable over time.",
+      "Distributed systems consist of multiple autonomous computers that communicate through a computer network. Designing these systems requires solving hard problems like consensus algorithms (e.g., Paxos, Raft), data replication, network partitions, and horizontal scaling.",
+      "Cryptographic algorithms like RSA, AES, and SHA-256 form the foundation of digital privacy and data integrity. They ensure that sensitive information transmitted across public networks remains confidential and immune to unauthorized interception or modifications.",
+      "Modern bundlers like Webpack, Rollup, and Vite compile modular JavaScript code into optimized assets. Tree-shaking, code-splitting, and minification are critical optimization processes that eliminate dead code and minimize bundle sizes for rapid network delivery.",
+      "WebAssembly (Wasm) is a binary instruction format for a stack-based virtual machine. It is designed as a portable compilation target for programming languages, enabling high-performance deployment on the web for client-side applications like image processing and game engines.",
+      "Server-side rendering (SSR) vs static site generation (SSG) represents a classic trade-off in frontend engineering. SSR compiles pages dynamically on each HTTP request, while SSG pre-builds pages during compile-time, optimizing for speed, caching, and search engine crawling."
     ]
   },
   uz: {
@@ -48,7 +78,14 @@ export const typingTexts = {
       "Eng yaxshi kelajakni bashorat qilish emas, uni o'z qo'lingiz bilan yaratishdir.",
       "Qo'lingizdan kelganicha, bor imkoniyatlar bilan, hozirgi joyda harakat qiling.",
       "O'zingizga ishoning va siz maqsadlaringizga erishish yo'lining yarmidasiz.",
-      "Yaxshi niyat - yarim mol. Har qanday ishni boshlashda niyatni pok qilish kerak."
+      "Yaxshi niyat - yarim mol. Har qanday ishni boshlashda niyatni pok qilish kerak.",
+      "Dastlab tezlikka emas, balki aniqlik va xatosiz yozishga e'tibor bering.",
+      "Dasturchilar kod yozishdan ko'ra uni ko'proq o'qish bilan shug'ullanishadi.",
+      "Har bir usta bir vaqtlar taslim bo'lishni xohlamagan oddiy boshlovchi bo'lgan.",
+      "Har kuni kichik qadamlar bilan maqsad sari harakat qilish katta natija beradi.",
+      "Oson tushuniladigan va sodda boshqariladigan toza kod yozishga harakat qiling.",
+      "Klaviatura qisqa yo'llari kod yozish jarayonida ko'p vaqtni tejaydi.",
+      "Barmoqlarda mushak xotirasini kuchaytirish uchun har kuni mashq qiling."
     ],
     intermediate: [
       "Dasturlash - bu kitob yozishga o'xshaydi, farqi shundaki, agar uch yuzinchi betda bitta vergul qolib ketsa, butun tizim ishlamay qoladi.",
@@ -57,8 +94,15 @@ export const typingTexts = {
       "Ming chaqirimlik yo'l ham birinchi qadamdan boshlanadi. Har kuni kichik qadamlar tashlab, oxir-oqibat o'z maqsadlaringizga yetib borasiz.",
       "Yaxshi dizayn faqat qanday ko'rinishi bilan emas, balki qanday ishlashi va foydalanuvchiga qanday qulaylik yaratishi bilan o'lchanadi.",
       "JavaScript - zamonaviy vebning asosi hisoblanadi. Uning yordamida dinamik va interaktiv veb-saytlar va murakkab ilovalar yaratish mumkin.",
-      "Doimiy mashg'ulotlar barmoqlarda mushak xotirasini shakllantiradi. Tez orada klaviaturaga qaramasdan ham tez yozishni boshlaisiz.",
-      "Texnologiya insonlarni birlashtirganda eng yaxshi vositaga aylanadi. Keling, dunyoni yanada qulay qiladigan ilovalar yarataylik."
+      "Doimiy mashg'ulotlar barmoqlarda mushak xotirasini shakllantiradi. Tez orada klaviaturaga qaramasdan ham tez yozishni boshlaysiz.",
+      "Texnologiya insonlarni birlashtirganda eng yaxshi vositaga aylanadi. Keling, dunyoni yanada qulay qiladigan ilovalar yarataylik.",
+      "React hooklari dasturchilarga class yozmasdan state va boshqa imkoniyatlardan foydalanishga imkon beradi va kodni ancha soddalashtiradi.",
+      "Git kabi versiyalarni boshqarish tizimlari jamoaviy dasturlashda juda muhim bo'lib, o'zgarishlarni kuzatib borish imkonini beradi.",
+      "Moslashuvchanlik (responsiveness) veb-sayt barcha turdagi qurilmalarda chiroyli ko'rinishini ta'minlash uchun xizmat qiladi.",
+      "Doimiy ravishda yangi bilimlarni o'rganib borish shiddatli dasturlash olamida raqobatbardosh bo'lib qolishning yagona yo'lidir.",
+      "Toza arxitektura biznes logikani yetkazib berish qatlamidan ajratib, kodni testlash va kengaytirishni osonlashtiradi.",
+      "Foydalanuvchi tajribasi (UX) dizayni insonlarning ehtiyojlari, qadriyatlari va imkoniyatlarini chuqur o'rganishga asoslanadi.",
+      "Xatolarni qidirish (debugging) kod yozishdan ko'ra ikki barobar qiyinroqdir. Shuning uchun kodni juda murakkab yozmang."
     ],
     advanced: [
       "React foydalanuvchi interfeyslarini yaratishni ancha osonlashtiradi. Tizimdagi har bir holat uchun oddiy ko'rinishlarni loyihalashtiring, ma'lumotlar o'zgarganda React kerakli komponentlarni avtomatik va tez yangilaydi. Komponentli arxitektura mustaqil kod yozishga yordam beradi.",
@@ -68,15 +112,31 @@ export const typingTexts = {
       "Klaviatura orqali tez va to'g'ri yozishni o'rganish uchun to'g'ri o'tirish tartibi, barmoqlarni asosiy qatorga to'g'ri joylashtirish va har bir harfni o'z barmog'i bilan bosish kerak. Dastlabki bosqichlarda tezlikdan ko'ra xatosiz yozish muhimroqdir.",
       "Ochiq kodli dasturlar (open source) hamjamiyati zamonaviy IT dunyosining asosidir. Millionlab dasturchilar bepul kutubxonalar va loyihalar ustida ishlaydi. Ushbu loyihalarga hissa qo'shish yoki hujjatlarini tarjima qilish juda foydalidir.",
       "Yangi dasturlash tilini o'rganish sabr va ko'p amaliyot talab qiladi. Shunchaki kitob o'qish yetarli emas; kichik dasturlar yozing, algoritmlarni yeching va tajribali dasturchilar yozgan kodlarni tahlil qilib, tushunishga harakat qiling.",
-      "Moslashuvchan interfeyslarni loyihalash mobil qurilmalar uchun birinchi navbatda yondashuvni talab qiladi (mobile-first). Kichik ekranlardan boshlab loyihalash orqali eng asosiy funksiyalarni aniqlab olish va keyin katta ekranlarga moslashtirish mumkin."
+      "Moslashuvchan interfeyslarni loyihalash mobil qurilmalar uchun birinchi navbatda yondashuvni talab qiladi (mobile-first). Kichik ekranlardan boshlab loyihalash orqali eng asosiy funksiyalarni aniqlab olish va keyin katta ekranlarga moslashtirish mumkin.",
+      "Ma'lumotlar bazasi indeksi - bu jadvaldan ma'lumotlarni qidirish tezligini oshiradigan maxsus tuzilmadir. Ammo u ma'lumotlarni yozish jarayonini biroz sekinlashtiradi va diskdan qo'shimcha joy talab qiladi.",
+      "CSS (Cascading Style Sheets) - bu sahifalarni bezash va ularga ko'rinish berish uchun ishlatiladigan stylesheet tilidir. U sahifa tuzilishini uning dizaynidan ajratib yuritish imkoniyatini taqdim etadi.",
+      "REST API tizimlari turli xil dasturlarning HTTP protokoli orqali o'zaro ma'lumot almashishini ta'minlaydi. GET, POST, PUT va DELETE so'rovlari yordamida ma'lumotlarni boshqarish juda qulay hisoblanadi.",
+      "Asinxron dasturlash texnikasi yordamida dastur biror uzoq davom etadigan vazifani boshlab, u tugashini kutmasdan boshqa ishlarni bajarishi mumkin. Bu foydalanuvchi interfeysi qotib qolmasligini ta'minlaydi.",
+      "Veb-inklyuzivlik (accessibility) imkoniyati cheklangan insonlar ham veb-saytlar va texnologiyalardan bemalol foydalanishlarini ta'minlashni ko'zda tutadi. Bunga ekranni o'qish va klaviaturada boshqarish kiradi.",
+      "Model-View-Controller arxitektura patterni foydalanuvchi interfeyslarini yaratishda keng qo'llaniladi. U ma'lumotlar modelini foydalanuvchiga ko'rsatiladigan vizual qismdan va ularni boshqaradigan logikadan ajratadi.",
+      "State (holat) menejmenti frontend ilovalarining eng muhim qismlaridan biridir. Ilova kattalashgan sari ma'lumotlarni komponentlar orasida uzatish qiyinlashadi, shu sababli Context API yoki Redux kabi kutubxonalar ishlatiladi."
     ],
     expert: [
       "Algoritmlarning vaqt bo'yicha murakkabligini o'lchash uchun Big O belgisi (masalan, O(N log N), O(1), O(N^2)) qo'llaniladi. Xotira va protsessor resurslari cheklangan yuqori yuklamali tizimlarda ma'lumotlar tuzilmasini to'g'ri tanlash dasturning ishlash samaradorligini hal qiladi.",
       "JavaScript-da asinxron dasturlash asosi bo'lgan Event Loop (hodisalar aylanmasi) kod bajarilishi, hodisalarni yig'ish va navbatdagi vazifalarni boshqaradi. Mikrovazifalar (masalan, Promise) va makrovazifalar (masalan, setTimeout) farqini bilish UI oqimining qotib qolishini oldini oladi.",
-      "Xavfsizlik dasturiy ta'minot yaratishning eng mootim ustunlaridan biridir. Dasturchilar o'z ilovalarini Cross-Site Scripting (XSS), SQL Injection va CSRF kabi keng tarqalgan hujumlardan himoya qilishlari shart. Barcha ma'lumotlarni tekshirish va xavfsiz protokollardan foydalanish shart.",
+      "Xavfsizlik dasturiy ta'minot yaratishning eng muhim ustunlaridan biridir. Dasturchilar o'z ilovalarini Cross-Site Scripting (XSS), SQL Injection va CSRF kabi keng tarqalgan hujumlardan himoya qilishlari shart. Barcha ma'lumotlarni tekshirish va xavfsiz protokollardan foydalanish shart.",
       "CSS Grid Layout va Flexbox zamonaviy sahifalash vositalaridir. Flexbox bir o'lchamli joylashuvlar (satr yoki ustun) uchun mo'ljallangan bo'lsa, Grid ikki o'lchamli joylashuvlar uchun xizmat qiladi, bu esa murakkab jadvallarni va moslashuvchan bloklarni oson boshqarish imkonini beradi.",
       "Funksional dasturlash prinsiplari: sof funksiyalar, o'zgarmaslik (immutability), birinchi darajali funksiyalar va kompozitsiya kodni tushunarli va testlashga oson qiladi. React-da bu tushunchalar hooklar va holatni (state) to'g'ridan-to'g'ri o'zgartirmaslik orqali ishlatiladi.",
-      "Docker kabi konteynerlashtirish va Kubernetes kabi orkestratsiya tizimlari dasturlarni tarqatish va boshqarishni butunlay o'zgartirdi. Dasturlarni barcha bog'liqliklari bilan birga konteynerga qadoqlash orqali har qanyak serverda bir xil ishlashiga erishiladi."
+      "Docker kabi konteynerlashtirish va Kubernetes kabi orkestratsiya tizimlari dasturlarni tarqatish va boshqarishni butunlay o'zgartirdi. Dasturlarni barcha bog'liqliklari bilan birga konteynerga qadoqlash orqali har qanday serverda bir xil ishlashiga erishiladi.",
+      "DNS (Domen nomlari tizimi) - bu internet tarmoqlarida domen nomlarini IP manzillar bilan bog'laydigan ierarxik tizimdir. U insonlar uchun tushunarli bo'lgan nomlarni kompyuterlar tushunadigan raqamlarga o'zgartiradi.",
+      "WebSockets texnologiyasi mijoz va server o'rtasida bitta TCP ulanishi orqali doimiy va ikki tomonlama aloqa o'rnatish imkonini beradi. Bu real vaqtdagi chatlar va multiplayer o'yinlar uchun juda muhimdir.",
+      "Yuqori darajali dasturlash tillarida xotirani tozalash (garbage collection) jarayoni avtomatik tarzda boshqariladi. Tizim ishlatilmayotgan obyektlarni aniqlab, ular egallab turgan joyni bo'shatadi va xotira to'lib qolishini oldini oladi.",
+      "SOLID prinsiplari (Yagona mas'uliyat, Ochiqlik-yopiqlik, Liskov o'rinbosarligi, Interfeyslarni ajratish va Bog'liqlikni almashtirish) moslashuvchan va kengayuvchan dasturlar yaratish uchun asosiy qo'llanma hisoblanadi.",
+      "Taqsimlangan tizimlar (distributed systems) tarmoq orqali o'zaro aloqa qiladigan bir nechta mustaqil kompyuterlardan iborat. Ularni yaratishda konsensus algoritmlari (Raft, Paxos) va ma'lumotlar replikatsiyasi kabi qiyin masalalarni yechish kerak bo'ladi.",
+      "Kriptografik algoritmlar (RSA, AES, SHA-256) shaxsiy ma'lumotlar daxlsizligi va ularning butunligini ta'minlash uchun xizmat qiladi. Ular tarmoq orqali uzatiladigan ma'lumotlarni begonalardan himoya qiladi.",
+      "Webpack, Rollup va Vite kabi zamonaviy yig'uvchilar (bundlers) yozilgan kodlarni brauzer uchun optimallashtiradi. Tree-shaking va kodlarni bo'laklarga ajratish (code-splitting) yuklanish tezligini oshiradi.",
+      "WebAssembly (Wasm) - bu veb-brauzerlar uchun yozilgan ikkilik instruksiya formatidir. U C++ yoki Rust kabi tillarda yozilgan kodlarni brauzerda deyarli native tezlikda bajarish imkonini taqdim etadi.",
+      "Server-side rendering (SSR) va Static Site Generation (SSG) frontend dasturlashda tezlik va qidiruv tizimlariga optimallashtirish (SEO) bo'yicha turli xil yondashuvlarni ifodalaydi."
     ]
   },
   ru: {
@@ -88,35 +148,65 @@ export const typingTexts = {
       "Жизнь - это то, что происходит, пока вы строите другие планы.",
       "Лучший способ предсказать будущее - это создать его самостоятельно.",
       "Делайте то, что можете, с тем, что у вас есть, прямо здесь и сейчас.",
-      "Верьте, что вы можете, и вы уже на полпути к достижению своей цели."
+      "Верьте, что вы можете, и вы уже на полпути к достижению своей цели.",
+      "Сначала сосредоточьтесь на точности, а скорость придет со временем.",
+      "Код читается намного чаще, чем пишется профессиональными разработчиками.",
+      "Каждый мастер когда-то был новичком, который просто не сдался.",
+      "Небольшой прогресс каждый день в итоге приводит к большим результатам.",
+      "Пишите чистый код, который легко читать и просто поддерживать в будущем.",
+      "Горячие клавиши экономят огромное количество времени при написании кода.",
+      "Практикуйтесь регулярно, чтобы выработать мышечную память пальцев."
     ],
     intermediate: [
       "Программирование похоже на написание книги с той разницей, что если вы пропустите одну запятую на трехсотой странице, вся книга потеряет смысл.",
       "Веб-разработка - постоянно развивающаяся сфера. Быть в курсе новых инструментов, фреймворков и лучших практик необходимо для успеха.",
-      "Терпение, упорство и труд составляют непобедимую комбинацию для достижения успеха. Никогда не отказывайтесь от того, чего вы действительно хотите.",
+      "Терпение, упорство и труд составляют непобедимую команду для достижения успеха. Никогда не отказывайтесь от того, чего вы действительно хотите.",
       "Путешествие в тысячу миль начинается с одного первого шага. Сосредоточьтесь на небольшом прогрессе каждый день, и вы достигнете целей.",
       "Хороший дизайн - это не просто то, как продукт выглядит и ощущается. Дизайн - это то, как он работает и какую пользу приносит людям.",
       "JavaScript - это мощный язык, который управляет современным вебом. Понимание замыканий, промисов и асинхронности - ключ к его освоению.",
       "Регулярная практика помогает развить мышечную память пальцев. Скоро вы будете печатать, не задумываясь о том, где находится нужная клавиша.",
-      "Технологии лучше всего тогда, когда они объединяют людей. Давайте создавать приложения, которые делают мир более связанным и удобным."
+      "Технологии лучше всего тогда, когда они объединяют людей. Давайте создавать приложения, которые делают мир более связанным и удобным.",
+      "Хуки в React позволяют разработчикам использовать состояние без написания классов, что значительно упрощает логику их компонентов.",
+      "Системы контроля версий, такие как Git, незаменимы для командной разработки и отслеживания изменений в исходном коде проекта.",
+      "Адаптивный дизайн гарантирует, что веб-сайты будут отлично смотреться на любых экранах, от смартфонов до больших мониторов.",
+      "Непрерывное обучение - это ключ к выживанию и успеху в динамично развивающемся мире информационных технологий.",
+      "Чистая архитектура отделяет бизнес-логику от деталей реализации, делая программный код тестируемым и поддерживаемым.",
+      "Проектирование пользовательского опыта фокусируется на глубоком понимании потребностей, ценностей и ограничений пользователей.",
+      "Поиск ошибок в коде работает вдвое сложнее, чем его написание. Если писать код максимально сложно, то как его потом отлаживать?"
     ],
     advanced: [
-      "React позволяет без труда создавать интерактивные пользовательские интерфейсы. Спроектируйте простые представления для каждого состояния вашего приложения, и React будет эффективно обновлять и отображать только нужные компоненты при изменении данных.",
-      "Глобальная экономика переживает масштабный переход к цифровым решениям. Компании, которые быстро адаптируются к онлайн-платформам, выживают, в то время как традиционные компании с трудом справляются с быстрым темпом инноваций.",
-      "При оптимизации производительности веб-приложений разработчикам следует сосредоточиться на минимизации размеров бандлов, ленивой загрузке изображений и маршрутов, а также избегании ненужных повторных рендеров для экономии батареи.",
-      "Искусственный интеллект и машинное обучение больше не являются концепциями будущего. Сегодня они управляют поисковыми системами, рекомендательными системами, беспилотными автомобилями и языковыми моделями, помогающими писать качественный код.",
+      "React позволяет без труда создавать интерактивные пользовательские интерфейсы. Спроектируйте простые представления для каждого состояния вашего приложения, и React будет эффективно обновлять и отображать только нужные компоненты при изменении данных. Компонентный подход позволяет повторно использовать код.",
+      "Глобальная экономика переживает масштабный переход к цифровым решениям. Компании, которые быстро адаптируются к онлайн-платформам, выживают, в то время как традиционные компании с трудом справляются с быстрым темпом инноваций. Разработчики играют ключевую роль в этом процессе.",
+      "При оптимизации производительности веб-приложений разработчикам следует сосредоточиться на минимизации размеров бандлов, ленивой загрузке изображений и маршрутов, а также избегании ненужных повторных рендеров для экономии батареи мобильных устройств пользователей.",
+      "Искусственный интеллект и машинное обучение больше не являются концепциями будущего. Сегодня они управляют поисковыми системами, рекомендательными системами, беспилотными автомобилями и языковыми моделями, помогающими программистам писать качественный код.",
       "Чтобы стать экспертом в слепой печати, вы должны сохранять правильную осанку, держать пальцы на клавишах исходного ряда и нажимать каждую клавишу соответствующим пальцем. Точность гораздо важнее скорости на начальных этапах обучения.",
-      "Сообщество разработчиков открытого исходного кода (open source) является основой современного программирования. Миллионы разработчиков вносят свой вклад в проекты, которые работают на глобальных серверах и базах данных.",
-      "Изучение нового языка программирования требует терпения и практического опыта. Вместо простого чтения книг пишите небольшие утилиты, решайте алгоритмические задачи и изучайте код, написанный опытными специалистами.",
-      "Проектирование адаптивных интерфейсов требует подхода, ориентированного на мобильные устройства (mobile-first). Начиная с небольших экранов, разработчики гарантируют, что самые важные функции будут в центре внимания пользователя."
+      "Сообщество разработчиков открытого исходного кода (open source) является основой современного программирования. Миллионы разработчиков вносят свой вклад в проекты, которые работают на глобальных серверах, базах данных и фронтенд-библиотеках.",
+      "Изучение нового языка программирования требует терпения и практического опыта. Вместо простого чтения книг пишите небольшие утилиты, решайте алгоритмические задачи и изучайте код, написанный опытными специалистами со всего мира.",
+      "Проектирование адаптивных интерфейсов требует подхода, ориентированного на мобильные устройства (mobile-first). Начиная с небольших экранов, разработчики гарантируют, что самые важные функции будут в центре внимания пользователя.",
+      "Индекс базы данных - это структура данных, которая повышает скорость операций выборки данных из таблицы за счет дополнительных затрат ресурсов при записи и хранении. Выбор правильных индексов требует анализа поисковых запросов приложения.",
+      "CSS (каскадные таблицы стилей) - это язык описания внешнего вида документа, написанного с использованием языка разметки. Он позволяет отделить структуру веб-страницы от ее визуального оформления и цветовой палитры.",
+      "REST API предоставляет стандартизированный способ взаимодействия различных программных систем по протоколу HTTP с использованием стандартных методов, таких как GET, POST, PUT и DELETE для управления ресурсами.",
+      "Асинхронное программирование позволяет запускать длительные задачи, сохраняя при этом отзывчивость приложения к другим событиям, вместо того чтобы полностью блокировать выполнение до завершения текущей операции.",
+      "Доступность веб-интерфейсов (web accessibility) гарантирует, что люди с ограниченными возможностями здоровья смогут полноценно взаимодействовать с сайтами с помощью экранных дикторов и навигации с клавиатуры.",
+      "Шаблон проектирования Model-View-Controller разделяет логику приложения на три взаимосвязанных компонента. Это позволяет изолировать внутреннее представление данных от способов их демонстрации пользователю.",
+      "Управление состоянием приложения (state management) становится сложной задачей по мере роста кодовой базы. Для решения проблем передачи данных между компонентами используют Context API, Redux или Zustand."
     ],
     expert: [
-      "Нотация Big O (например, O(N log N), O(1), O(N^2)) измеряет временную сложность алгоритмов в худшем случае. Выбор правильной структуры данных—такой как хэш-таблица, двоичное дерево или граф—критически важен для оптимизации памяти и циклов процессора.",
-      "В современном асинхронном программировании на JavaScript Event Loop координирует выполнение кода, собирает и обрабатывает события и выполняет задачи из очереди. Понимание микрозадач (Promise) и макрозадач (setTimeout) предотвращает зависание UI.",
+      "Нотация Big O (например, O(N log N), O(1), O(N^2)) измеряет временную сложность алгоритмов в худшем случае. Выбор правильной структуры данных—такой как хэш-таблица, двоичное дерево или граф—критически важен для оптимизации памяти и циклов процессора в высоконагруженных системах.",
+      "В современном асинхронном программировании на JavaScript Event Loop координирует выполнение кода, собирает и обрабатывает события и выполняет задачи из очереди. Понимание микрозадач (Promise) и макрозадач (setTimeout) предотвращает зависание UI-потока.",
       "Безопасность является ключевым столпом разработки программного обеспечения. Разработчики должны защищать приложения от распространенных уязвимостей, таких как межсайтовый скриптинг (XSS), внедрение SQL-кода (SQLi) и подделка межсайтовых запросов (CSRF).",
       "CSS Grid Layout и Flexbox - мощные механизмы верстки. В то время как Flexbox идеален для одномерных макетов (строка или столбец), Grid разработан для двумерных макетов, предоставляя точный контроль над сеткой страниц без использования сложных хаков.",
       "Принципы функционального программирования, такие как чистые функции, неизменяемость данных (immutability), функции высшего порядка и композиция, помогают писать предсказуемый код. В React эти концепции лежат в основе хуков и обновления состояния.",
-      "Инструменты контейнеризации, такие как Docker, и системы оркестрации, такие как Kubernetes, революционизировали развертывание ПО. Упаковка приложений со всеми зависимостями гарантирует стабильность работы в любой облачной инфраструктуре."
+      "Инструменты контейнеризации, такие как Docker, и системы оркестрации, такие как Kubernetes, революционизировали развертывание ПО. Упаковка приложений со всеми зависимостями гарантирует стабильность работы в любой облачной инфраструктуре.",
+      "Система доменных имен (DNS) представляет собой иерархическую распределенную систему для получения информации о доменах. Она сопоставляет понятные человеку имена сайтов со служебными числовыми IP-адресами серверов.",
+      "Протокол WebSocket обеспечивает двусторонний обмен данными в реальном времени между сервером и клиентом через одно постоянное TCP-соединение, что необходимо для создания чатов, многопользовательских игр и биржевых графиков.",
+      "Сборка мусора (garbage collection) в языках высокого уровня автоматизирует управление оперативной памятью. Сборщик освобождает память, занятую объектами, которые больше не используются, снижая риски переполнения и утечек.",
+      "Принципы SOLID (единая ответственность, открытость-закрытость, подстановка Барбары Лисков, разделение интерфейса и инверсия зависимостей) служат основой для написания чистого, гибкого и поддерживаемого объектно-ориентированного кода.",
+      "Распределенные системы состоят из множества независимых компьютеров, взаимодействующих по сети. Проектирование таких систем требует решения сложных проблем консенсуса (алгоритмы Raft, Paxos), репликации данных и масштабируемости.",
+      "Криптографические алгоритмы (RSA, AES, SHA-256) обеспечивают конфиденциальность и целостность передаваемой информации. Они шифруют данные, защищая их от несанкционированного перехвата и изменения при передаче по сети.",
+      "Современные сборщики (Webpack, Rollup, Vite) оптимизируют код модулей. Удаление неиспользуемого кода (tree-shaking) и разделение бандлов снижают объем скачиваемых ресурсов и ускоряют начальную отрисовку страниц сайта.",
+      "WebAssembly (Wasm) представляет собой компактный бинарный формат инструкций, позволяющий исполнять на веб-страницах код, написанный на компилируемых языках вроде Rust или C++, с околонативной производительностью.",
+      "Рендеринг на стороне сервера (SSR) и генерация статических сайтов (SSG) - это подходы к доставке веб-контента, балансирующие между динамической сборкой страниц на каждый запрос и быстрой отдачей кэшированных файлов."
     ]
   }
 };

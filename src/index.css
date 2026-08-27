@@ -1277,3 +1277,154 @@ input:checked + .slider:before {
   pointer-events: auto;
 }
 
+/* Responsive Overrides down to 350px for small mobiles */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  .card {
+    padding: 1rem !important;
+  }
+  
+  .hero-title {
+    font-size: 1.85rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.95rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .header-container {
+    height: 3.5rem !important;
+    padding: 0 0.5rem !important;
+  }
+  
+  .logo-section {
+    font-size: 1.1rem !important;
+    gap: 0.35rem !important;
+  }
+  
+  .logo-icon {
+    width: 22px !important;
+    height: 22px !important;
+  }
+  
+  .nav-links.mobile-open {
+    top: 3.5rem !important;
+    padding: 1rem !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Compact live telemetry stats bar */
+  .stats-bar {
+    padding: 0.6rem !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+  }
+  
+  .stats-group {
+    width: 100% !important;
+    justify-content: space-around !important;
+    gap: 0.5rem !important;
+  }
+  
+  .stat-box .val {
+    font-size: 1.15rem !important;
+  }
+  
+  .stat-box .label {
+    font-size: 0.65rem !important;
+  }
+  
+  .speed-badge {
+    padding: 0.2rem 0.5rem !important;
+    font-size: 0.7rem !important;
+  }
+  
+  /* Compact Typing box sizing */
+  .typing-box-wrapper {
+    padding: 0.75rem !important;
+    min-height: 110px !important;
+  }
+  
+  .typing-text-display {
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    word-spacing: 0.12em !important;
+  }
+  
+  /* Result Modal responsiveness */
+  .modal-content {
+    padding: 1.25rem 1rem !important;
+    width: 95% !important;
+  }
+  
+  .modal-title {
+    font-size: 1.35rem !important;
+  }
+  
+  .results-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  
+  .result-metric {
+    padding: 0.6rem !important;
+  }
+  
+  .result-metric .val {
+    font-size: 1.35rem !important;
+  }
+  
+  .modal-actions {
+    flex-direction: column-reverse !important;
+    gap: 0.5rem !important;
+    padding-top: 1rem !important;
+  }
+  
+  .modal-actions .btn {
+    width: 100% !important;
+    padding: 0.5rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Settings page controls wrapper */
+  .setting-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.4rem !important;
+  }
+  
+  .setting-row select, 
+  .setting-row .caret-options, 
+  .setting-row .switch {
+    align-self: flex-start !important;
+  }
+  
+  /* Difficulty and settings lists spacing */
+  .difficulty-selector {
+    gap: 0.35rem !important;
+    justify-content: center !important;
+  }
+  
+  .diff-btn {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  /* Achievements cards alignment */
+  .achievements-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Dashboard layout grids */
+  .dashboard-summary {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+}
+
+

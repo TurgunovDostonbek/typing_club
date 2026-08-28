@@ -4,6 +4,7 @@ import { getStatsSummary, getDailyChallenge } from '../utils/statisticsUtils';
 import { 
   Play, 
   BookOpen, 
+  Code,
   Zap, 
   Target, 
   Clock, 
@@ -62,7 +63,7 @@ export default function Home() {
           <p className="hero-subtitle" style={{ margin: '0 0 2rem 0', fontSize: '1.25rem' }}>
             Practice every day. Type faster. Make fewer mistakes. Built for developers, students, and touch typists.
           </p>
-          <div className="hero-actions" style={{ marginBottom: 0 }}>
+          <div className="hero-actions" style={{ marginBottom: 0, gap: '0.75rem', flexWrap: 'wrap' }}>
             <Link to="/test" className="btn btn-primary" style={{ padding: '0.75rem 1.75rem' }}>
               <Play size={20} fill="currentColor" />
               <span>Start Typing</span>
@@ -70,6 +71,10 @@ export default function Home() {
             <Link to="/practice" className="btn btn-secondary" style={{ padding: '0.75rem 1.75rem' }}>
               <BookOpen size={20} />
               <span>Practice Mode</span>
+            </Link>
+            <Link to="/coding" className="btn btn-secondary" style={{ padding: '0.75rem 1.75rem' }}>
+              <Code size={20} />
+              <span>Coding Mode</span>
             </Link>
           </div>
         </div>

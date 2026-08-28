@@ -268,7 +268,12 @@ export default function useTypingTest(customDuration = null, customText = null) 
       return;
     }
 
-    if (e.key.length !== 1 && e.key !== 'Backspace') {
+    const isEnterKey = e.key === 'Enter';
+    if (isEnterKey && status !== 'completed') {
+      e.preventDefault();
+    }
+
+    if (e.key.length !== 1 && e.key !== 'Backspace' && !isEnterKey) {
       return;
     }
 
@@ -283,6 +288,7 @@ export default function useTypingTest(customDuration = null, customText = null) 
 
     let keyName = e.key;
     if (keyName === ' ') keyName = 'space';
+    if (keyName === 'Enter') keyName = 'enter';
     setActiveKey(keyName);
     
     setTimeout(() => {
@@ -315,7 +321,7 @@ export default function useTypingTest(customDuration = null, customText = null) 
     if (currentIndex >= text.length) return;
 
     const targetChar = text[currentIndex];
-    const typedChar = e.key;
+    const typedChar = isEnterKey ? '\n' : e.key;
     const isCorrect = typedChar === targetChar;
 
     playSynthesizedSound(isCorrect);

@@ -12,6 +12,7 @@ import {
   X,
   Play,
   BookOpen,
+  Code,
   BarChart2,
   Settings as SettingsIcon,
   Home
@@ -29,6 +30,7 @@ export default function Header() {
     { path: '/', label: 'Home', icon: Home },
     { path: '/test', label: 'Test', icon: Play },
     { path: '/practice', label: 'Practice', icon: BookOpen },
+    { path: '/coding', label: 'Coding', icon: Code },
     { path: '/statistics', label: 'Statistics', icon: BarChart2 },
     { path: '/settings', label: 'Settings', icon: SettingsIcon },
   ];

@@ -189,7 +189,8 @@ export default function CodingMode() {
 
       {/* Code Typing Box */}
       <div 
-        className={`typing-box-wrapper ${isFocused ? 'focused' : ''} ${shakeActive ? 'shake-active' : ''}`}
+        key={currentCode}
+        className={`typing-box-wrapper fade-in-up-anim ${isFocused ? 'focused' : ''} ${shakeActive ? 'shake-active' : ''}`}
         onClick={handleWrapperClick}
         style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', minHeight: '220px' }}
       >
@@ -286,6 +287,79 @@ export default function CodingMode() {
         onRestart={resetTest}
         onClose={() => setShowResultsModal(false)}
       />
+
+      <style>{`
+        .fade-in-up-anim {
+          animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(12px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .char.correct {
+          animation: charCorrectPop 0.12s ease-out;
+        }
+
+        @keyframes charCorrectPop {
+          0% {
+            background-color: rgba(16, 185, 129, 0.15);
+            transform: scale(0.96);
+          }
+          100% {
+            background-color: transparent;
+            transform: scale(1);
+          }
+        }
+
+        .char.incorrect {
+          animation: charIncorrectShake 0.15s ease-in-out;
+        }
+
+        @keyframes charIncorrectShake {
+          0%, 100% { transform: translateX(0); }
+          25% { transform: translateX(-2px); }
+          75% { transform: translateX(2px); }
+        }
+
+        .typing-box-wrapper.focused {
+          animation: focusPulse 2s infinite alternate ease-in-out;
+          border-color: var(--primary);
+        }
+
+        @keyframes focusPulse {
+          0% {
+            box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.12);
+          }
+          100% {
+            box-shadow: 0 0 0 5px rgba(var(--primary-rgb), 0.22);
+          }
+        }
+
+        .speed-badge {
+          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .diff-btn {
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .diff-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15);
+        }
+
+        .diff-btn:active {
+          transform: translateY(0);
+        }
+      `}</style>
     </div>
   );
 }
